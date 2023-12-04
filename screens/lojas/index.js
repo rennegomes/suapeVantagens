@@ -1,19 +1,19 @@
 import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View, ScrollView, Pressable } from 'react-native';
 import { Horse, ArrowLeft, DotsThreeOutline, Equals, TextAlignJustify } from 'phosphor-react-native';
 import LogoHorizontal from "../../assets/imgens/LogoHorizontal.png";
-import { useNavigation } from '@react-navigation/native'
+import { useLinkProps, useNavigation } from '@react-navigation/native'
 import axios from 'axios';
 import { useState, useEffect } from "react";
 import React from 'react'
-import { CardLojas } from '../../utils/cardCategoria';
+import { CardLojas } from '../../utils/cardLojas';
 import {IPLOCAL} from "@env";
 
-export const Lojas = () => {
+export const Lojas = (props) => {
   const navigation = useNavigation();
   const [lojas,SetLojas] = useState([]);
   const getAllLojas = async () => {
     try {
-      const response = await axios.get(`http://${IPLOCAL}/categoria`)
+      const response = await axios.get(`http://${IPLOCAL}/estabelecimento/`)
 
       const dados = response.data;
 
@@ -29,30 +29,35 @@ export const Lojas = () => {
     getAllLojas();
    },[]);
   return (
-    
     <View style={styles.container}>
       <View style={styles.header}>
         <Pressable onPress={()=>{navigation.goBack()}}>
         <ArrowLeft />
         </Pressable>
         <Image style={styles.logo} source={LogoHorizontal}/>
+        
         <Pressable onPress={()=>{navigation.navigate('Perfil')}}>
-        <TextAlignJustify  />
+        <TextAlignJustify />
         </Pressable>
       </View>
 
+
       <View style={styles.caixaCategoria}>
+      
       <FlatList
           data={lojas}
           kayExtrator={(item) => item.id}
           renderItem={({item}) => 
           <TouchableOpacity>
-          <CardLojas logo={item.logo} nome={item.nome} />
+          <CardLojas logo={item.logo} nome={item.nome} tipo={item.tipo}/>
           </TouchableOpacity>}
+          
           // horizontal
           contentContainerStyle={styles.listaCategoria}
           showsVerticalScrollIndicator={false}
+          
           />
+          <Text>{props.tipo}</Text>
       </View>
     </View>
     )
