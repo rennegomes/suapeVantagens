@@ -1,19 +1,22 @@
 import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View, ScrollView, Pressable } from 'react-native';
 import { Horse, ArrowLeft, DotsThreeOutline, Equals, TextAlignJustify } from 'phosphor-react-native';
 import LogoHorizontal from "../../assets/imgens/LogoHorizontal.png";
-import { useLinkProps, useNavigation } from '@react-navigation/native'
+import { useLinkProps, useNavigation} from '@react-navigation/native'
 import axios from 'axios';
 import { useState, useEffect } from "react";
 import React from 'react'
 import { CardLojas } from '../../utils/cardLojas';
 import {IPLOCAL} from "@env";
 
-export const Lojas = (props) => {
+
+export const Lojas = ({route}) => {
+  const { titulo } = route.params;
   const navigation = useNavigation();
   const [lojas,SetLojas] = useState([]);
+  
   const getAllLojas = async () => {
     try {
-      const response = await axios.get(`http://${IPLOCAL}/estabelecimento/${props.titulo}`)
+      const response = await axios.get(`http://${IPLOCAL}/estabelecimento/${titulo}`)
 
       const dados = response.data;
 
@@ -49,7 +52,7 @@ export const Lojas = (props) => {
           kayExtrator={(item) => item.id}
           renderItem={({item}) => 
           <TouchableOpacity>
-          <CardLojas logo={item.logo} nome={item.nome} tipo={item.tipo}/>
+          <CardLojas logo={item.logo} nome={item.nome} />
           </TouchableOpacity>}
           
           // horizontal
@@ -57,7 +60,7 @@ export const Lojas = (props) => {
           showsVerticalScrollIndicator={false}
           
           />
-          <Text>{props.tipo}</Text>
+          
       </View>
     </View>
     )

@@ -10,7 +10,7 @@ export const CardLojas = (props) => {
                 <View style={styles.caixaTexto}>
                 <Text style={styles.texto}>
                 {props.nome}
-                </Text>
+                </Text>    
                 </View>
             </ImageBackground>
         </TouchableOpacity>

@@ -1,13 +1,18 @@
 import { Image, TouchableOpacity, StyleSheet, ScrollView, Text, ImageBackground, View } from "react-native"
 import { useNavigation } from '@react-navigation/native'
 
+
 export const CardCategoria = (props) => {
-    
+   
     const navigation = useNavigation();
     return(
-        <TouchableOpacity style={styles.caixaListaCategoria}  onPress={()=>{navigation.navigate('Lojas'), {
-            titulo:props.titulo
-        }}}>
+        <TouchableOpacity style={styles.caixaListaCategoria}  onPress={()=>{navigation.navigate('Lojas',{
+            titulo: props.titulo
+        })
+       
+    }
+        }>
+            
             <ImageBackground style={styles.listaCategoria2} src={props.banner}>
                 <View style={styles.caixaTexto}>
                 <Text style={styles.texto}>
