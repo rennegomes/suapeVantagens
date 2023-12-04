@@ -13,7 +13,7 @@ export const Lojas = (props) => {
   const [lojas,SetLojas] = useState([]);
   const getAllLojas = async () => {
     try {
-      const response = await axios.get(`http://${IPLOCAL}/estabelecimento/`)
+      const response = await axios.get(`http://${IPLOCAL}/estabelecimento/${props.titulo}`)
 
       const dados = response.data;
 

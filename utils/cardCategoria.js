@@ -5,7 +5,9 @@ export const CardCategoria = (props) => {
     
     const navigation = useNavigation();
     return(
-        <TouchableOpacity style={styles.caixaListaCategoria}  onPress={()=>{navigation.navigate('Lojas')}}>
+        <TouchableOpacity style={styles.caixaListaCategoria}  onPress={()=>{navigation.navigate('Lojas'), {
+            titulo:props.titulo
+        }}}>
             <ImageBackground style={styles.listaCategoria2} src={props.banner}>
                 <View style={styles.caixaTexto}>
                 <Text style={styles.texto}>
@@ -14,6 +16,8 @@ export const CardCategoria = (props) => {
                 </View>
             </ImageBackground>
         </TouchableOpacity>
+
+        
        
     );
 };
