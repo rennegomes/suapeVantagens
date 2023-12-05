@@ -107,8 +107,8 @@ const styles = StyleSheet.create({
   },
 
   logo: {
-    marginTop: 0,
-    width: "50 %",
+    marginTop: 50,
+    width: "50%",
     height: "500 %",
   },
 
