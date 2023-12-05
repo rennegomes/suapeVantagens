@@ -4,13 +4,16 @@ import { useNavigation } from '@react-navigation/native'
 export const CardLojas = (props) => {
     const navigation = useNavigation();
     return(<View>
-        
-        <TouchableOpacity style={styles.caixaListaCategoria} onPress={()=>{navigation.navigate('Home')}}>
+        <TouchableOpacity style={styles.caixaListaCategoria} onPress={()=>{navigation.navigate('PerfilLojas',{
+            id:props.id
+            
+        })}}>
             <ImageBackground style={styles.listaCategoria2} src={props.logo}>
                 <View style={styles.caixaTexto}>
                 <Text style={styles.texto}>
                 {props.nome}
-                </Text>    
+                </Text>
+                   
                 </View>
             </ImageBackground>
         </TouchableOpacity>

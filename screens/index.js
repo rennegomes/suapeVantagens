@@ -48,7 +48,7 @@ export const Home = () => {
         
           <FlatList
           data={banners}
-          kayExtrator={(item) => item.id}
+          kayExtrator={(item) => item._id}
           renderItem={({item}) => 
           <TouchableOpacity>
           <CardCategoria banner={item.banner} titulo={item.titulo} />

@@ -31,14 +31,14 @@ export const Lojas = ({route}) => {
   useEffect(()=>{
     getAllLojas();
    },[]);
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Pressable onPress={()=>{navigation.goBack()}}>
         <ArrowLeft />
         </Pressable>
-        <Image style={styles.logo} source={LogoHorizontal}/>
-        
+        <Text style={styles.titulo}>{titulo}</Text>
         <Pressable onPress={()=>{navigation.navigate('Perfil')}}>
         <TextAlignJustify />
         </Pressable>
@@ -49,10 +49,10 @@ export const Lojas = ({route}) => {
       
       <FlatList
           data={lojas}
-          kayExtrator={(item) => item.id}
+          kayExtrator={(item) => item._id}
           renderItem={({item}) => 
           <TouchableOpacity>
-          <CardLojas logo={item.logo} nome={item.nome} />
+          <CardLojas logo={item.logo} nome={item.nome} id={item._id} />
           </TouchableOpacity>}
           
           // horizontal
@@ -96,5 +96,10 @@ const styles = StyleSheet.create({
 
     listaCategoria: {
       margin: 0,
+    },
+    titulo: {
+      fontSize: 18.73,
+      textAlign: 'center',
+      width: "40%",
     },
   });
