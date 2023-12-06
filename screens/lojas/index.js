@@ -10,7 +10,7 @@ import {IPLOCAL} from "@env";
 
 
 export const Lojas = ({route}) => {
-  const { titulo } = route.params;
+  const { titulo,banner} = route.params;
   const navigation = useNavigation();
   const [lojas,SetLojas] = useState([]);
   
@@ -52,7 +52,7 @@ export const Lojas = ({route}) => {
           kayExtrator={(item) => item._id}
           renderItem={({item}) => 
           <TouchableOpacity>
-          <CardLojas logo={item.logo} nome={item.nome} id={item._id} />
+          <CardLojas logo={item.logo} nome={item.nome} id={item._id} banner={banner} />
           </TouchableOpacity>}
           
           // horizontal

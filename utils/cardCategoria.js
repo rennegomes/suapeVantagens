@@ -7,13 +7,14 @@ export const CardCategoria = (props) => {
     const navigation = useNavigation();
     return(
         <TouchableOpacity style={styles.caixaListaCategoria}  onPress={()=>{navigation.navigate('Lojas',{
-            titulo: props.titulo
+            titulo: props.titulo,
+            banner: props.banner
         })
        
     }
         }>
             
-            <ImageBackground style={styles.listaCategoria2} src={props.banner}>
+            <ImageBackground imageStyle={{borderRadius:20}} style={styles.listaCategoria2} src={props.banner}>
                 <View style={styles.caixaTexto}>
                 <Text style={styles.texto}>
                 {props.titulo}

@@ -9,6 +9,7 @@ import {
   ScrollView,
   Pressable,
   Button,
+  ImageBackground,
 } from "react-native";
 import {
   Horse,
@@ -18,13 +19,15 @@ import {
   TextAlignJustify,
 } from "phosphor-react-native";
 import LogoHorizontal from "../../assets/imgens/LogoHorizontal.png";
+import overlay from "../../assets/overlay.png";
+import Estetica from "../../assets/categorias/Estetica.png";
 import { useLinkProps, useNavigation } from "@react-navigation/native";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import React from "react";
 
 export const PerfilLojas = ({ route }) => {
-    const {id} = route.params;
+    const {id,banner} = route.params;
   const navigation = useNavigation();
   const [loja, SetLoja] = useState([]);
 
@@ -48,28 +51,34 @@ export const PerfilLojas = ({ route }) => {
 
   return (
     <View style={styles.container}>
+    <ImageBackground style={styles.background} src={banner}>
+    <View pointerEvents="none" style={styles.overlay}></View>
       <View style={styles.header}>
+      
         <Pressable
           onPress={() => {
             navigation.goBack();
           }}
         >
-          <ArrowLeft />
+          <ArrowLeft style={styles.botoes} />
         </Pressable>
         <Image style={styles.logo} src={loja.logo} />
-        <Pressable
+        <Pressable 
           onPress={() => {
             navigation.navigate("Perfil");
           }}
         >
-          <TextAlignJustify />
+          <TextAlignJustify style={styles.botoes} />
         </Pressable>
       </View>
-
+     
+      </ImageBackground>
+      
       <View style={styles.caixaCategoria}>
           <View style={styles.caixaNome}>
         <Text style={styles.nome}>{loja.nome}</Text>
         </View>
+        
         <TouchableOpacity>
           <Text style={styles.desconto}>Cupom de Desconto</Text>
         </TouchableOpacity>
@@ -88,33 +97,42 @@ export const PerfilLojas = ({ route }) => {
         <Text>CNPJ:4564564-65</Text>
        
       </View>
+      
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "#fff",
+    flex:1,
   },
 
   header: {
-    flexDirection: "row",
+    flexDirection: 'row',
     width: "100 %",
     justifyContent: "space-evenly",
     alignItems: "center",
     marginTop: 80,
   },
+  background:{
+    paddingBottom:110,
+    
+  },
 
   logo: {
     marginTop: 50,
     width: "50%",
-    height: "500 %",
+    maxWidth:150,
+     height: "400%",
+     maxHeight:150,
+    borderRadius: 200,
+    borderWidth:2,
+    borderColor:"#000",
   },
-
+ 
   caixaCategoria: {
-    paddingBottom: 110,
-    marginTop: 80,
+    marginTop:-20,
+    paddingBottom: 130,
     paddingLeft: 25,
     paddingRight: 25,
     borderTopLeftRadius:30,
@@ -163,4 +181,12 @@ const styles = StyleSheet.create({
     paddingTop:10,
 
   },
+  overlay:{
+    height:500,
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+  botoes:{
+    color:'white',
+  }
 });
