@@ -10,6 +10,7 @@ import {
   Pressable,
   Button,
   ImageBackground,
+  
 } from "react-native";
 import {
   Horse,
@@ -18,6 +19,7 @@ import {
   Equals,
   TextAlignJustify,
 } from "phosphor-react-native";
+
 import LogoHorizontal from "../../assets/imgens/LogoHorizontal.png";
 import overlay from "../../assets/overlay.png";
 import Estetica from "../../assets/categorias/Estetica.png";
@@ -73,8 +75,8 @@ export const PerfilLojas = ({ route }) => {
       </View>
      
       </ImageBackground>
-      
-      <View style={styles.caixaCategoria}>
+      <ScrollView style={styles.caixaCategoria}>
+      <View>
           <View style={styles.caixaNome}>
         <Text style={styles.nome}>{loja.nome}</Text>
         </View>
@@ -83,21 +85,32 @@ export const PerfilLojas = ({ route }) => {
           <Text style={styles.desconto}>Cupom de Desconto</Text>
         </TouchableOpacity>
         <Text style={styles.info}>Mais Informações</Text>
-        <Text style={styles.title}>Descrição da Loja:</Text>
-        <Text>A loja é bonita</Text>
-        <Text style={styles.title}>Horário:</Text>
-        <Text>18:30</Text>
-        <Text style={styles.title}>Telefone:</Text>
+        <Text style={styles.title}>Descrição da Loja</Text>
+        <Text style={styles.maisinfos}>{loja.descricao}</Text>
+        <Text style={styles.title}>Horários</Text>
+        <Text>{loja.horaIni}</Text>
+        <Text>{loja.horaFim}</Text>
+        <Text style={styles.title}>Telefone</Text>
         <Text style={styles.telefone}>{loja.telefone}</Text>
         <Text style={styles.title}>Forma de Pagamento:</Text>
-        <Text>as formas estarão aqui!!!!!!!</Text>
+          <View style={{
+           flexDirection: 'row',
+           width: "100 %",
+           justifyContent: "space-evenly",
+           alignItems: "center",
+           marginTop: 5,
+          }}>
+        <Image style={styles.formapag} src={loja.masterCardLogo} />
+        <Image style={styles.formapag} src={loja.visaLogo} />
+        <Image style={styles.formapag} src={loja.eloLogo} />
+        </View>
         <Text style={styles.title}>Localização:</Text>
         <Text style={styles.endereco}>{loja.endereco}</Text>
         <Text style={styles.title}>Outras Informações</Text>
-        <Text>CNPJ:4564564-65</Text>
+        <Text>CNPJ:{loja.cnpj}</Text>
        
       </View>
-      
+      </ScrollView>
     </View>
   );
 };
@@ -188,5 +201,16 @@ const styles = StyleSheet.create({
   },
   botoes:{
     color:'white',
-  }
+  },maisinfos:
+  {
+    textAlign:'justify',
+
+  },
+  formapag:{
+    marginTop: 20,
+    width: "30%",
+    maxWidth:150,
+     height: 100,
+     maxHeight:100,
+  },
 });
