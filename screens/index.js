@@ -4,6 +4,7 @@ import LogoHorizontal from "../assets/imgens/LogoHorizontal.png";
 import { CATEGORIAS } from '../utils/categorias';
 import { CardCategoria } from '../utils/cardCategoria';
 import { Perfil } from './perfil';
+import { Dados } from './dados';
 import { Horse, ArrowLeft, DotsThreeOutline, Equals, TextAlignJustify } from 'phosphor-react-native';
 import { useNavigation } from '@react-navigation/native'
 import axios from 'axios';
@@ -13,7 +14,7 @@ import {IPLOCAL} from "@env";
 
 export const Home = () => {
   const navigation = useNavigation();
-  const [banners,SetBanners] = useState([]);
+  const [banners, SetBanners, loja] = useState([]);
   const getAllBanners = async () => {
     try {
       const response = await axios.get(`http://${IPLOCAL}/banner`)
@@ -65,7 +66,7 @@ export const Home = () => {
 
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
+      flex: 4,
       backgroundColor: '#73B6B6',
     },
 

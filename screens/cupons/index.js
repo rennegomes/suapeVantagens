@@ -9,32 +9,32 @@ import { CardLojas } from '../../utils/cardLojas';
 import {IPLOCAL} from "@env";
 
 
-export const Lojas = ({route}) => {
-  const { titulo,banner} = route.params;
-  const navigation = useNavigation();
-  const [lojas,SetLojas] = useState([]);
+export const Cupons = ({route}) => {
+    const navigation = useNavigation();
+//   const { titulo,banner} = route.params;
+//   const [lojas,SetLojas] = useState([]);
   
-  const getAllLojas = async () => {
-    try {
-      const response = await axios.get(`http://${IPLOCAL}/estabelecimento/${titulo}`)
+//   const getAllLojas = async () => {
+//     try {
+//       const response = await axios.get(`http://${IPLOCAL}/estabelecimento/${titulo}`)
 
-      const dados = response.data;
+//       const dados = response.data;
 
-      SetLojas(dados)
+//       SetLojas(dados)
 
 
-    } catch (error) {
-      console.log(error.message)
-    }
-  } 
+//     } catch (error) {
+//       console.log(error.message)
+//     }
+//   } 
 
-  useEffect(()=>{
-    getAllLojas();
-   },[]);
+//   useEffect(()=>{
+//     getAllLojas();
+//    },[]);
 
   return (
     <View style={styles.container}>
-      <ImageBackground imageStyle={{borderRadius:20}} style={styles.background} src={banner}>
+      <ImageBackground imageStyle={{borderRadius:20}} style={styles.background}>
     <View pointerEvents="none" style={styles.overlay}></View>
       <View style={styles.header}>
       
@@ -47,19 +47,19 @@ export const Lojas = ({route}) => {
         </Pressable>
         <Pressable 
           onPress={() => {
-            navigation.navigate("Perfil");
+            navigation.goBack();
           }}
         >
-          <TextAlignJustify style={styles.botoes} />
+          <TextAlignJustify style={[styles.botoes, {color: 'rgba(0, 0, 0, 0.5)'} ]} />
         </Pressable>
       </View>
-      <Text style={styles.titulo}>{titulo}</Text>
+      {/* <Text style={styles.titulo}>{titulo}</Text> */}
       </ImageBackground>
 
 
       <View style={styles.caixaCategoria}>
       
-      <FlatList
+      {/* <FlatList
           data={lojas}
           kayExtrator={(item) => item._id}
           renderItem={({item}) => 
@@ -71,7 +71,7 @@ export const Lojas = ({route}) => {
           contentContainerStyle={styles.listaCategoria}
           showsVerticalScrollIndicator={false}
           
-          />
+          /> */}
           
       </View>
     </View>

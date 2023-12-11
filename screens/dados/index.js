@@ -5,12 +5,11 @@ import { useNavigation } from '@react-navigation/native'
 import axios from 'axios';
 import { useState, useEffect } from "react";
 import { Login } from '../login';
-import { Dados } from '../dados';
 import React from 'react'
 import { CardLojas } from '../../utils/cardCategoria';
 import {IPLOCAL} from "@env";
 
-export const Perfil = () => {
+export const Dados = () => {
   const navigation = useNavigation();
   const [perfil,SetPerfils] = useState([]);
   // const getAllPerfils = async () => {
@@ -64,14 +63,14 @@ export const Perfil = () => {
       <Text style={styles.texto}>707070-70</Text>
       </View>
 
-      <View>
-        <Pressable style={styles.opcoes} onPress={()=>{navigation.navigate('Dados')}} >
+      {/* <View>
+        <Pressable style={styles.opcoes} >
           <Text style={[styles.negrito, {fontSize: 20}]}>Meus dados</Text>
         </Pressable>
         <Pressable style={styles.opcoes} onPress={()=>{navigation.navigate('Login')}}>
           <Text style={[styles.negrito, {fontSize: 20}]}>Sair</Text>
         </Pressable>
-      </View>
+      </View> */}
     </View>
     )
 };

@@ -10,6 +10,7 @@ export const CardLojas = (props) => {
             
         })}}>
             <ImageBackground imageStyle={{borderRadius:20}} style={styles.listaCategoria2} src={props.logo}>
+            <View pointerEvents="none" style={styles.overlay}></View>
                 <View style={styles.caixaTexto}>
                 <Text style={styles.texto}>
                 {props.nome}
@@ -50,5 +51,12 @@ const styles = StyleSheet.create({
         color: "#FFF",
         fontSize: 25,
         // opacity: 1
+    },
+
+    overlay:{
+        height:150,
+        ...StyleSheet.absoluteFillObject,
+        backgroundColor: 'rgba(0, 0, 0, 0.47)',
+        borderRadius:20
     },
   });

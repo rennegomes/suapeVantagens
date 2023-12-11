@@ -29,7 +29,7 @@ import { useState, useEffect } from "react";
 import React from "react";
 
 export const PerfilLojas = ({ route }) => {
-    const {id,banner} = route.params;
+  const {id,banner} = route.params;
   const navigation = useNavigation();
   const [loja, SetLoja] = useState([]);
 
@@ -81,34 +81,65 @@ export const PerfilLojas = ({ route }) => {
         <Text style={styles.nome}>{loja.nome}</Text>
         </View>
         
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=>{navigation.navigate('Cupons')}}>
           <Text style={styles.desconto}>Cupom de Desconto</Text>
         </TouchableOpacity>
+
         <Text style={styles.info}>Mais Informações</Text>
         <Text style={styles.title}>Descrição da Loja</Text>
-        <Text style={styles.maisinfos}>{loja.descricao}</Text>
+        <Text style={[styles.maisinfos, styles.espaco]}>{loja.descricao}</Text>
+
         <Text style={styles.title}>Horários</Text>
-        <Text>{loja.horaIni}</Text>
-        <Text>{loja.horaFim}</Text>
+        <View style={styles.horario}>
+          <Text>Segunda-feira</Text>
+          <Text>{loja.segunda}</Text>
+        </View>
+
+        <View style={styles.horario}>
+          <Text>Terça-feira </Text>
+          <Text>{loja.terca}</Text>
+        </View>
+
+        <View style={styles.horario}>
+          <Text>Quarta-feira </Text>
+          <Text>{loja.quarta}</Text>
+        </View>
+
+        <View style={styles.horario}>
+          <Text>Quinta-feira </Text>
+          <Text> {loja.quinta}</Text>
+        </View>
+
+        <View style={styles.horario}>
+          <Text>Sexta-feira </Text>
+          <Text>{loja.sexta}</Text>
+        </View>
+
+        <View style={styles.horario}>
+          <Text>Sabado </Text>
+          <Text>{loja.sabado}</Text>
+        </View>
+
+        <View style={styles.horario}>
+          <Text>Domingo </Text>
+          <Text style={styles.espaco}>{loja.domingo}</Text>
+        </View>
+
         <Text style={styles.title}>Telefone</Text>
-        <Text style={styles.telefone}>{loja.telefone}</Text>
-        <Text style={styles.title}>Forma de Pagamento:</Text>
-          <View style={{
-           flexDirection: 'row',
-           width: "100 %",
-           justifyContent: "space-evenly",
-           alignItems: "center",
-           marginTop: 5,
-          }}>
+        <Text style={[styles.telefone, styles.espaco]}>{loja.telefone}</Text>
+
+        <Text style={[styles.title, {marginBottom: -10}]}>Forma de Pagamento:</Text>
+          <View style={styles.pagviw}>
         <Image style={styles.formapag} src={loja.masterCardLogo} />
         <Image style={styles.formapag} src={loja.visaLogo} />
         <Image style={styles.formapag} src={loja.eloLogo} />
         </View>
+
         <Text style={styles.title}>Localização:</Text>
-        <Text style={styles.endereco}>{loja.endereco}</Text>
+        <Text style={[styles.endereco, styles.espaco]}>{loja.endereco}</Text>
+
         <Text style={styles.title}>Outras Informações</Text>
-        <Text>CNPJ:{loja.cnpj}</Text>
-       
+        <Text style={styles.espaco}>CNPJ:{loja.cnpj}</Text>
       </View>
       </ScrollView>
     </View>
@@ -127,9 +158,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 80,
   },
+
   background:{
     paddingBottom:110,
-    
   },
 
   logo: {
@@ -153,6 +184,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#73B6B6",
         
   },
+
   caixaNome:{
     paddingBottom: 20,
     borderBottomColor: '#000',
@@ -187,30 +219,50 @@ const styles = StyleSheet.create({
     
   },
   
- 
   title:{
     color:'#fff',
-    fontSize:16,
+    fontSize:20,
     paddingTop:10,
-
+    marginBottom: 10
   },
+
   overlay:{
     height:500,
     ...StyleSheet.absoluteFillObject,
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
+
   botoes:{
     color:'white',
-  },maisinfos:
+  },
+
+  maisinfos:
   {
     textAlign:'justify',
-
   },
+
+  pagviw:{
+    flexDirection: 'row',
+    width: "100 %",
+    justifyContent: "space-evenly",
+    alignItems: "center",
+    marginTop: 5,
+  },
+
   formapag:{
     marginTop: 20,
     width: "30%",
     maxWidth:150,
      height: 100,
-     maxHeight:100,
+     maxHeight: 50,
   },
+
+  espaco: {
+    marginBottom: 15,
+  },
+
+  horario:{
+    flexDirection: "row",
+    justifyContent: "space-between"
+  }
 });

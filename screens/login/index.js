@@ -1,6 +1,6 @@
-import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View, ScrollView, Pressable } from 'react-native';
+import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View, ScrollView, Pressable, TextInput, Button, Alert} from 'react-native';
 import { Horse, ArrowLeft, DotsThreeOutline, Equals, TextAlignJustify } from 'phosphor-react-native';
-import LogoHorizontal from "../../assets/imgens/LogoHorizontal.png";
+import LogoVertical from "../../assets/imgens/LogoVertical.png";
 import { useNavigation } from '@react-navigation/native'
 import axios from 'axios';
 import { useState, useEffect } from "react";
@@ -10,6 +10,8 @@ import {IPLOCAL} from "@env";
 
 export const Login = () => {
   const navigation = useNavigation();
+  const [cpf, setCpf] = React.useState('');
+  const [senha, setSenha] = React.useState('');
   const [login,SetLogins] = useState([]);
   const getAllLogins = async () => {
     try {
@@ -35,12 +37,38 @@ export const Login = () => {
         <Pressable onPress={()=>{navigation.navigate('Home')}}>
         <ArrowLeft />
         </Pressable>
-        {/* <Image style={styles.logo} source={LogoHorizontal}/> */}
-        <Text ㅤ/><Text ㅤ/><Text ㅤ/><Text ㅤ/><Text ㅤ/><Text ㅤ/>
+        <Pressable>
+        <TextAlignJustify style={styles.botoes} />
+      </Pressable>
       </View>
 
-      <View style={styles.caixaCategoria}>
-      <FlatList
+      <Image style={styles.logo} source={LogoVertical}/>
+      <Text style={styles.texto}>Faça seu login</Text>
+
+      <View style={styles.caixaImput}>
+
+      <TextInput
+        id='cpf'
+        style={styles.input}
+        // onChangeText={setCpf}
+        onChangeText={(cpf) => setCpf(cpf)}
+        maxLength={8}
+        value={cpf}
+        placeholder="CPF"
+        keyboardType="numeric"
+      />
+
+      <TextInput
+        id='senha'
+        style={styles.input}
+        // onChangeText={setSenha}
+        onChangeText={(senha) => setSenha(senha)}
+        value={senha}
+        secureTextEntry={true}
+        placeholder="SENHA"
+        keyboardType="numeric"
+      />
+      {/* <FlatList
           data={login}
           kayExtrator={(item) => item.id}
           renderItem={({item}) => 
@@ -50,7 +78,17 @@ export const Login = () => {
           // horizontal
           contentContainerStyle={styles.listaCategoria}
           showsVerticalScrollIndicator={false}
-          />
+          /> */}
+      </View>
+
+      <View style={styles.entrar}>
+        <Button
+          id='entrar'
+          fontSize= "50"
+          title="Entrar"
+          color="#DF8D2D"
+          onPress={() => Alert.alert(`${cpf} ${senha} Entrou!`)}
+        />
       </View>
     </View>
     )
@@ -63,23 +101,24 @@ const styles = StyleSheet.create({
     },
 
     header: {
-      flexDirection: "row",
+      flexDirection: 'row',
       width: "100 %",
-      justifyContent: "space-evenly",
+      justifyContent: "space-between",
       alignItems: "center",
       marginTop: 80,
-      
+      paddingHorizontal: 35
     },
 
     logo:{
       marginTop: 0,
-      width: "50 %",
-      height: "500 %",
+      width: 200,
+      height: 200,
+      alignSelf:"center",
     },
 
-    caixaCategoria:{
-      paddingBottom: 110,
-      marginTop: 40,
+    caixaImput:{
+      paddingBottom: 40,
+      marginTop: 0,
       marginLeft: 10,
       marginRight: 10,
     },
@@ -87,4 +126,33 @@ const styles = StyleSheet.create({
     listaCategoria: {
       margin: 0,
     },
+
+    botoes: {
+      color: '#73B6B6',
+    },
+
+    texto: {
+      color: "#fff",
+      fontSize: 30,
+      textAlign: "center",
+      marginBottom: 15,
+    },
+
+    input:{
+    height: 60,
+    marginRight: 10,
+    marginLeft: 10,
+    marginBottom: 10,
+    // borderWidth: 1,
+    padding: 10,
+    textAlign: "center",
+    backgroundColor: "#fff",
+    borderRadius: 10,
+    },
+
+    entrar:{
+      alignSelf:"center",
+      width: 200,
+      borderRadius: 20,
+    }
   });
