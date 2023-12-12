@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     },
 
     background:{
-      paddingBottom:60,
+      paddingBottom:'14.6%',
       borderEndEndRadius: 200,
     },
 

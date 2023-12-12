@@ -33,6 +33,33 @@ export const PerfilLojas = ({ route }) => {
   const navigation = useNavigation();
   const [loja, SetLoja] = useState([]);
 
+  const numMin = 65, numMax = 90
+
+  const numerosAletorios = (minimo, maximo) =>{
+      return Math.floor(Math.random()*(maximo - minimo)+ minimo)
+  }
+
+  const transfDecParaCaract = (numeAleatorio) =>{
+      return String.fromCharCode(numeAleatorio)
+  }
+  const criaCod = (min, max)=>{
+    let numAleatorio, caracter, codCupom = ""
+    for (let index = 0; index <= 5; index++) {
+     numAleatorio = numerosAletorios(min, max)
+     caracter = transfDecParaCaract(numAleatorio)
+     codCupom = codCupom + caracter; 
+    
+  }
+  
+ return codCupom;
+}
+var codQr = criaCod(numMin,numMax)
+
+
+  
+  
+   
+
   const getLoja = async () => {
     try {
       const response = await axios.get(
@@ -81,7 +108,10 @@ export const PerfilLojas = ({ route }) => {
         <Text style={styles.nome}>{loja.nome}</Text>
         </View>
         
-        <TouchableOpacity onPress={()=>{navigation.navigate('Cupons')}}>
+        <TouchableOpacity onPress={()=>{navigation.navigate('Cupons', {
+          codCupom:codQr
+        })
+        }}>
           <Text style={styles.desconto}>Cupom de Desconto</Text>
         </TouchableOpacity>
 

@@ -1,4 +1,4 @@
-import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View, ScrollView, Pressable, ImageBackground } from 'react-native';
+import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View, ScrollView, Pressable, ImageBackground, TextInput } from 'react-native';
 import { Horse, ArrowLeft, DotsThreeOutline, Equals, TextAlignJustify } from 'phosphor-react-native';
 import LogoHorizontal from "../../assets/imgens/LogoHorizontal.png";
 import { useLinkProps, useNavigation} from '@react-navigation/native'
@@ -7,10 +7,22 @@ import { useState, useEffect } from "react";
 import React from 'react'
 import { CardLojas } from '../../utils/cardLojas';
 import {IPLOCAL} from "@env";
+import QRCode from 'react-native-qrcode-svg';
 
 
 export const Cupons = ({route}) => {
     const navigation = useNavigation();
+    const {codCupom} = route.params;
+    const [cod, setCod] = useState('');
+
+      useEffect(()=>{
+    setCod(codCupom);
+   },[]);
+  
+
+  // console.log(String.fromCharCode(72, 69, 76, 76, 79))
+
+
 //   const { titulo,banner} = route.params;
 //   const [lojas,SetLojas] = useState([]);
   
@@ -57,21 +69,21 @@ export const Cupons = ({route}) => {
       </ImageBackground>
 
 
-      <View style={styles.caixaCategoria}>
+      <View style={styles.caixaQrCode}>
+        <QRCode 
+        value={codCupom}
+        size={250}
+        color='black'
+        backgroundColor='#73B6B6'
+        logo={LogoHorizontal}
+        logoSize={30}
+        logoMargin={5}
+        logoBorderRadius={15}
+        logoBackgroundColor='#DF8D2D'
+        />
+
+       <Text>{cod}</Text>
       
-      {/* <FlatList
-          data={lojas}
-          kayExtrator={(item) => item._id}
-          renderItem={({item}) => 
-          <TouchableOpacity>
-          <CardLojas logo={item.logo} nome={item.nome} id={item._id} banner={banner} />
-          </TouchableOpacity>}
-          
-          // horizontal
-          contentContainerStyle={styles.listaCategoria}
-          showsVerticalScrollIndicator={false}
-          
-          /> */}
           
       </View>
     </View>
@@ -104,7 +116,7 @@ const styles = StyleSheet.create({
       height: "500 %",
     },
 
-    caixaCategoria:{
+    caixaQrCode:{
       paddingBottom: 110,
       marginTop: 40,
       marginLeft: 10,
