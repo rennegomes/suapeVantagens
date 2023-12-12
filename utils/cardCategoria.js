@@ -43,6 +43,8 @@ const styles = StyleSheet.create({
         height: 150,
         borderRadius: 20,
         objectFit: "fill",
+        width: 178,
+        margin: 3,
         // opacity: 0.5
     },
     caixaListaCategoria: {
@@ -57,7 +59,8 @@ const styles = StyleSheet.create({
     },
     texto: {
         color: "#FFF",
-        fontSize: 25,
+        fontSize: 18,
+        fontWeight: 'bold'
         // opacity: 1
     },
 

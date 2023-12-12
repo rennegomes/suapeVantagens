@@ -48,6 +48,7 @@ export const Home = () => {
       <View style={styles.caixaCategoria}>
         
           <FlatList
+          numColumns={2}
           data={banners}
           kayExtrator={(item) => item._id}
           renderItem={({item}) => 
@@ -87,9 +88,10 @@ const styles = StyleSheet.create({
 
     caixaCategoria:{
       paddingBottom: 110,
-      marginTop: 40,
+      marginTop: "30%",
       marginLeft: 10,
       marginRight: 10,
+      alignItems: 'center',    
     },
 
     listaCategoria: {

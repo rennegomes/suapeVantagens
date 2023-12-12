@@ -45,11 +45,11 @@ const styles = StyleSheet.create({
         display: "flex",
         alignItems: "flex-start",
         paddingTop: 100,
-        paddingLeft: 10
+        paddingLeft: 10,
     },
     texto: {
         color: "#FFF",
-        fontSize: 25,
+        fontSize: 22,
         // opacity: 1
     },
 
