@@ -1,6 +1,6 @@
 import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View, ScrollView, Pressable } from 'react-native';
 import { Horse, ArrowLeft, DotsThreeOutline, Equals, TextAlignJustify } from 'phosphor-react-native';
-import LogoVertical from "../../assets/imgens/LogoVertical.png";
+import LogoVertical from "../../assets/categorias/Alessandro-Henrique.png";
 import { useNavigation } from '@react-navigation/native'
 import axios from 'axios';
 import { useState, useEffect } from "react";

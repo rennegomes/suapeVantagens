@@ -198,7 +198,9 @@ const [userLocation, setUserLocation] = useState(null);
         </View>
         
         <TouchableOpacity onPress={()=>{navigation.navigate('Cupons', {
-          codCupom:codQr
+          codCupom:codQr,
+          logoLoja: loja.logo
+
         })
         }}>
           <Text style={styles.desconto}>Cupom de Desconto</Text>

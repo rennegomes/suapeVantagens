@@ -1,6 +1,6 @@
 import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View, ScrollView, Pressable } from 'react-native';
 import { Horse, ArrowLeft, DotsThreeOutline, Equals, TextAlignJustify } from 'phosphor-react-native';
-import LogoVertical from "../../assets/imgens/LogoVertical.png";
+import fotoPerfil from "../../assets/categorias/Alessandro-Henrique.png";
 import { useNavigation } from '@react-navigation/native'
 import axios from 'axios';
 import { useState, useEffect } from "react";
@@ -59,7 +59,7 @@ export const Perfil = ({route}) => {
           contentContainerStyle={styles.listaCategoria}
           showsVerticalScrollIndicator={false}
           /> */}
-      <Image style={styles.fotoPerfil} source={LogoVertical} />
+      <Image style={styles.fotoPerfil} source={fotoPerfil} />
       <Text style={[styles.texto, styles.negrito]}>Márcio Milet</Text>
       <Text style={styles.texto}>707070-70</Text>
       </View>

@@ -12,7 +12,7 @@ import QRCode from 'react-native-qrcode-svg';
 
 export const Cupons = ({route}) => {
     const navigation = useNavigation();
-    const {codCupom} = route.params;
+    const {codCupom,logoLoja} = route.params;
     const [cod, setCod] = useState('');
 
       useEffect(()=>{
@@ -46,7 +46,7 @@ export const Cupons = ({route}) => {
 
   return (
     <View style={styles.container}>
-      <ImageBackground imageStyle={{borderRadius:20}} style={styles.background}>
+      <ImageBackground imageStyle={{borderRadius:20}} style={styles.background} src={logoLoja} >
     <View pointerEvents="none" style={styles.overlay}></View>
       <View style={styles.header}>
       
@@ -57,12 +57,8 @@ export const Cupons = ({route}) => {
         >
           <ArrowLeft style={styles.botoes} />
         </Pressable>
-        <Pressable 
-          onPress={() => {
-            navigation.goBack();
-          }}
-        >
-          <TextAlignJustify style={[styles.botoes, {color: 'rgba(0, 0, 0, 0.5)'} ]} />
+        <Pressable >
+          <TextAlignJustify style={[styles.botoes, {color: 'rgba(0, 0, 0, 0)'} ]} />
         </Pressable>
       </View>
       {/* <Text style={styles.titulo}>{titulo}</Text> */}
@@ -106,7 +102,7 @@ const styles = StyleSheet.create({
     },
 
     background:{
-      paddingBottom:60,
+      paddingBottom:90,
       borderEndEndRadius: 200,
     },
 
