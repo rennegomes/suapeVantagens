@@ -7,6 +7,7 @@ import { Login } from '../screens/login';
 import { Dados } from '../screens/dados';
 import { Cupons } from '../screens/cupons';
 import { PerfilLojas } from '../screens/perfilLojas';
+import { Senha } from "../screens/senha";
 
 export const Routes = () => {
     const Stack = createNativeStackNavigator();
@@ -20,6 +21,7 @@ export const Routes = () => {
             <Stack.Screen name="Dados" component={Dados} options={{headerShown : false}} />
             <Stack.Screen name="Cupons" component={Cupons} options={{headerShown : false}} />
             <Stack.Screen name="PerfilLojas" component={PerfilLojas} options={{headerShown : false}} />
+            <Stack.Screen name="Senha" component={Senha} options={{headerShown : false}} />
         </Stack.Navigator>
     )
 };

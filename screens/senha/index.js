@@ -10,7 +10,7 @@ import {IPLOCAL} from "@env";
 import { sha256 } from "react-native-sha256";
 
 
-export const Login = () => {
+export const Senha = () => {
   const navigation = useNavigation();
   const [cpf, setCpf] = useState('');
   const [senha, setSenha] = useState('');
@@ -32,17 +32,46 @@ export const Login = () => {
     }
   } 
 
+   useEffect(()=>{
+    getLogin();
+    },[]);
+
+  
+//    const convertSHA =  (senhaUser) => {
+//    sha256(senhaUser).then((hash)=>{
+//     setSenhaCripto(hash)
+//     Alert.alert(senhaCripto)
+//    })
+//   };
+  
+//    sha256("Test").then( hash => {
+//     console.log(hash);
+// })
+
+
+    // try {
+    //   const encoder = new TextEncoder();
+    //   const data = encoder.encode(senha);
+    
+    //   const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+    
+    //   const hashArray = Array.from(new Uint8Array(hashBuffer));
+    //   const senhaCri = hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
+    // } catch (err) {
+    //   console.log(err)
+    // }
+
+     
+  
 
   const logar =  (cpfUser, senhaUser, loginDb) =>{
-    
-    if (loginDb.cpf == cpfUser && loginDb.senha == senhaUser){
+   
+    if (loginDb.cpf == cpfUser || loginDb.senha == senhaUser){
       Alert.alert("Logado com sucesso!")
       navigation.navigate('Home')
     }else{
-      Alert.alert("Login ou senha incorreta!");
+      Alert.alert("Login ou senha incorretos!")
     }
-    
-    
     
    
   }
@@ -71,10 +100,7 @@ export const Login = () => {
         id='cpf'
         style={styles.input}
         // onChangeText={setCpf}
-        onChangeText={(cpf) => {
-          setCpf(cpf)
-          
-        }}
+        onChangeText={(cpf) => setCpf(cpf)}
         maxLength={14}
         value={cpf}
         placeholder="CPF"
@@ -85,10 +111,7 @@ export const Login = () => {
         id='senha'
         style={styles.input}
         // onChangeText={setSenha}
-        onChangeText={(senha) => {
-          setSenha(senha)
-          getLogin()
-        }}
+        onChangeText={(senha) => setSenha(senha)}
         value={senha}
         secureTextEntry={true}
         placeholder="SENHA"
@@ -102,7 +125,7 @@ export const Login = () => {
           title="Entrar"
           color="#DF8D2D"
           onPress={() => {
-           logar(cpf, senha, login);
+              logar(cpf, senha, login)
           }
           }
         />
