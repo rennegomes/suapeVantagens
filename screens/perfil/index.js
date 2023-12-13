@@ -10,7 +10,7 @@ import React from 'react'
 import { CardLojas } from '../../utils/cardCategoria';
 import {IPLOCAL} from "@env";
 
-export const Perfil = () => {
+export const Perfil = ({route}) => {
   const navigation = useNavigation();
   const [perfil,SetPerfils] = useState([]);
   // const getAllPerfils = async () => {

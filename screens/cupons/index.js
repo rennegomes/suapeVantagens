@@ -74,18 +74,18 @@ export const Cupons = ({route}) => {
         value={codCupom}
         size={250}
         color='black'
-        backgroundColor='#73B6B6'
         logo={LogoHorizontal}
         logoSize={30}
         logoMargin={5}
         logoBorderRadius={15}
         logoBackgroundColor='#DF8D2D'
         />
-
-       <Text>{cod}</Text>
-      
-          
       </View>
+      <Text style={[styles.codigoQrCodeTexto, {marginTop: 15, fontWeight:'bold',}]} >Seu código:</Text>
+      <View style={styles.codigoQrCode}>
+      <Text style={styles.codigoQrCodeTexto} >{cod}</Text>
+      </View>
+
     </View>
     )
 };
@@ -93,7 +93,7 @@ export const Cupons = ({route}) => {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#73B6B6',
+      backgroundColor: '#DF8D2D',
     },
 
     header: {
@@ -117,10 +117,22 @@ const styles = StyleSheet.create({
     },
 
     caixaQrCode:{
-      paddingBottom: 110,
-      marginTop: 40,
-      marginLeft: 10,
-      marginRight: 10,
+      marginTop: 150,
+      alignSelf: 'center',
+      padding: 15,
+      backgroundColor: '#fff',
+      borderRadius: 20
+    },
+
+    codigoQrCode:{
+      marginTop:15,
+      backgroundColor: '#73B6B6',
+    },
+    codigoQrCodeTexto:{
+      margin:5,
+      fontSize: 30,
+      textAlign: 'center',
+      color: '#fff',
     },
 
     listaCategoria: {

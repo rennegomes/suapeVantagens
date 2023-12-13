@@ -248,25 +248,29 @@ const [userLocation, setUserLocation] = useState(null);
         <Text style={[styles.telefone, styles.espaco]}>{loja.telefone}</Text>
 
         <Text style={[styles.title, {marginBottom: -10}]}>Forma de Pagamento:</Text>
-          <View style={styles.pagviw}>
+        <View style={styles.pagviw}>
         <Image style={styles.formapag} src={loja.masterCardLogo} />
         <Image style={styles.formapag} src={loja.visaLogo} />
         <Image style={styles.formapag} src={loja.eloLogo} />
         </View>
 
+        <Text style={styles.title}>Localização:</Text>
+        <Text style={[styles.endereco, styles.espaco]}>{loja.endereco}</Text>
+
         <View style={{ flex: 1 }}>
       {userLocation && (
         <View>
           <Text>
-            Sua localização - Latitude: {userLocation.latitude}, Longitude: {userLocation.longitude}
+            {/* Sua localização - Latitude: {userLocation.latitude}, Longitude: {userLocation.longitude} */}
           </Text>
           {/* height: Dimensions.get('window').height */}
+          <View style={styles.caixaMapa}> 
           <MapView
-            style={{ flex: 1,height: 200, width:200, maxHeight:500, maxWidth:600}}
+            style={styles.mapa}
             initialRegion={mapRegion}
             onLayout={onMapLayout}
           >
-            <Marker coordinate={userLocation} title="Sua Localização" />
+            <Marker  coordinate={userLocation} title="Sua Localização" />
             {destinationPoints.map(point => (
               <Marker
                 key={point.id}
@@ -275,22 +279,19 @@ const [userLocation, setUserLocation] = useState(null);
               />
             ))}
           </MapView>
+          </View> 
           <View>
-            <Text> {loja.latitude} e {loja.longetude}</Text>
-            <Text>Distâncias para os pontos simulados:</Text>
+            {/* <Text> {loja.latitude} e {loja.longetude}</Text> */}
+            {/* <Text style={{maxWidth:150, marginLeft: 10, color: '#fff', fontSize: 15,}}>Distâncias para os pontos simulados:</Text> */}
             {destinationPoints.map(point => (
-              <Text key={point.id}>
-                {point.title}: {calculateDistance(userLocation.latitude, userLocation.longitude, point.latitude, point.longitude)} km
+              <Text key={point.id} style={styles.mapaTexto}>
+                {point.title} fica a: {calculateDistance(userLocation.latitude, userLocation.longitude, point.latitude, point.longitude)} km de você
               </Text>
             ))}
-          </View>
+            </View>
         </View>
       )}
     </View>
-
-
-        <Text style={styles.title}>Localização:</Text>
-        <Text style={[styles.endereco, styles.espaco]}>{loja.endereco}</Text>
 
         <Text style={styles.title}>Outras Informações</Text>
         <Text style={styles.espaco}>CNPJ:{loja.cnpj}</Text>
@@ -321,8 +322,8 @@ const styles = StyleSheet.create({
     marginTop: 50,
     width: "50%",
     maxWidth:150,
-     height: "400%",
-     maxHeight:150,
+    height: "400%",
+    maxHeight:150,
     borderRadius: 200,
     borderWidth:2,
     borderColor:"#000",
@@ -418,5 +419,21 @@ const styles = StyleSheet.create({
   horario:{
     flexDirection: "row",
     justifyContent: "space-between"
+  },
+
+  caixaMapa:{
+    Height:150,
+    Width:220,
+    borderColor: '#000',
+    borderWidth: 2,
+  },
+  mapa:{
+    height: 150
+  },
+  mapaTexto:{
+    marginLeft: 10,
+    marginTop: 10,
+    fontSize: 15,
+    textAlign:'center'
   }
 });
