@@ -6,8 +6,10 @@ export const CardLojas = (props) => {
     return(<View>
         <TouchableOpacity style={styles.caixaListaCategoria} onPress={()=>{navigation.navigate('PerfilLojas',{
             id:props.id,
-            banner:props.banner
-            
+            banner:props.banner,
+            latitude:props.latitude,
+            nome: props.nome,
+            longitude: props.longitude
         })}}>
             <ImageBackground imageStyle={{borderRadius:20}} style={styles.listaCategoria2} src={props.logo}>
             <View pointerEvents="none" style={styles.overlay}></View>

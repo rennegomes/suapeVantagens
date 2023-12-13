@@ -64,7 +64,7 @@ export const Lojas = ({route}) => {
           kayExtrator={(item) => item._id}
           renderItem={({item}) => 
           <TouchableOpacity>
-          <CardLojas logo={item.logo} nome={item.nome} id={item._id} banner={banner} />
+          <CardLojas logo={item.logo} nome={item.nome} id={item._id} banner={banner} latitude={item.latitude} longitude={item.longetude} />
           </TouchableOpacity>}
           
           // horizontal
