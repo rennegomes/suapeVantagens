@@ -1,5 +1,5 @@
 import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View, ScrollView, Pressable, ImageBackground, TextInput, Share, Alert } from 'react-native';
-import { Horse, ArrowLeft, DotsThreeOutline, Equals, TextAlignJustify } from 'phosphor-react-native';
+import { Horse, ArrowLeft, DotsThreeOutline, Equals, TextAlignJustify, ShareNetwork} from 'phosphor-react-native';
 import LogoHorizontal from "../../assets/imgens/LogoHorizontal.png";
 import { useLinkProps, useNavigation} from '@react-navigation/native'
 import axios from 'axios';
@@ -8,7 +8,8 @@ import React from 'react'
 import { CardLojas } from '../../utils/cardLojas';
 import {IPLOCAL} from "@env";
 import QRCode from 'react-native-qrcode-svg';
-// import Share from 'react-native-share';
+
+
 
 
 export const Cupons = ({route}) => {
@@ -32,45 +33,7 @@ export const Cupons = ({route}) => {
     }
   }
 
-  //  const compartQrcod = async ()=>{
-
-  //   const options = {
-  //     mensagem: "compartilhou.",
-  //   }
-
-  // try {
-  //   const respostaCompart = await Share.open(options)
-  // } catch (err) {
-  //    console.log(err.message)
-  // }
-  
-    
-    
-  //  }
-
-  // console.log(String.fromCharCode(72, 69, 76, 76, 79))
-
-
-//   const { titulo,banner} = route.params;
-//   const [lojas,SetLojas] = useState([]);
-  
-//   const getAllLojas = async () => {
-//     try {
-//       const response = await axios.get(`http://${IPLOCAL}/estabelecimento/${titulo}`)
-
-//       const dados = response.data;
-
-//       SetLojas(dados)
-
-
-//     } catch (error) {
-//       console.log(error.message)
-//     }
-//   } 
-
-//   useEffect(()=>{
-//     getAllLojas();
-//    },[]);
+ 
 
   return (
     <View style={styles.container}>
@@ -106,11 +69,16 @@ export const Cupons = ({route}) => {
       </View>
       <Text style={[styles.codigoQrCodeTexto, {marginTop: 15, fontWeight:'bold',}]} >Seu código:</Text>
       <View style={styles.codigoQrCode}>
-      <Pressable onPress={onShare}>
+     
       <Text style={styles.codigoQrCodeTexto} >{cod}</Text>
-      </Pressable>
+      
       
       </View>
+
+      <Pressable onPress={onShare} style={{alignSelf: "center", marginTop: 15, backgroundColor:"#73B6B6", borderRadius: 20,padding:10 }}>
+      <ShareNetwork size={50} style={{color: "#fff" }} />
+      </Pressable>
+      
 
     </View>
     )
@@ -143,7 +111,7 @@ const styles = StyleSheet.create({
     },
 
     caixaQrCode:{
-      marginTop: 150,
+      marginTop: 70,
       alignSelf: 'center',
       padding: 15,
       backgroundColor: '#fff',
