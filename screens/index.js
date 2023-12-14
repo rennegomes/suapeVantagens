@@ -12,8 +12,10 @@ import { useState, useEffect } from "react";
 import {IPLOCAL} from "@env";
 
 
-export const Home = () => {
+export const Home = ({route}) => {
   const navigation = useNavigation();
+  const {loginValidado} = route.params
+
   const [banners, SetBanners, loja] = useState([]);
   const getAllBanners = async () => {
     try {
@@ -40,7 +42,9 @@ export const Home = () => {
       <View style={styles.header}>
         <Text ㅤ/><Text ㅤ/>
         <Image style={styles.logo} source={LogoHorizontal}/>
-        <Pressable onPress={()=>{navigation.navigate('Perfil')}}>
+        <Pressable onPress={()=>{navigation.navigate('Perfil', {
+          login: loginValidado,
+        })}}>
         <TextAlignJustify  />
         </Pressable>
       </View>

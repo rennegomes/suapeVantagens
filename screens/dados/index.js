@@ -1,6 +1,6 @@
-import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View, ScrollView, Pressable } from 'react-native';
+import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View, ScrollView, Pressable, TextInput, Button, Alert } from 'react-native';
 import { Horse, ArrowLeft, DotsThreeOutline, Equals, TextAlignJustify } from 'phosphor-react-native';
-import LogoVertical from "../../assets/categorias/Alessandro-Henrique.png";
+import fotoPerfil from "../../assets/categorias/Alessandro-Henrique.png";
 import { useNavigation } from '@react-navigation/native'
 import axios from 'axios';
 import { useState, useEffect } from "react";
@@ -9,26 +9,37 @@ import React from 'react'
 import { CardLojas } from '../../utils/cardCategoria';
 import {IPLOCAL} from "@env";
 
-export const Dados = () => {
+export const Dados = ({route}) => {
   const navigation = useNavigation();
-  const [perfil,SetPerfils] = useState([]);
-  // const getAllPerfils = async () => {
-  //   try {
-  //     const response = await axios.get(`http://${IPLOCAL}/categoria`)
+  const {loginUser} = route.params;
+  const {_id,cpf, senha, status, nome, foto, email, telefone,} = loginUser;
+  const [dados, setDados] = useState('')
+  const [emailAtual, setEmailAtual] = useState('')
+ const [telefoneAtual, setTelefoneAtual] = useState('')
 
-  //     const dados = response.data;
+  const updatePerfil = async (req, res) => {
+    try {
 
-  //     SetPerfils(dados)
+      var reqBody = {nome, emailAtual, cpf, telefoneAtual, senha, status}
 
+       axios.patch(`http://${IPLOCAL}/login/${_id}`, reqBody).then((res)=>{
+        Alert.alert("Atualizado com sucesso! Faça o seu login novamente...")
+        navigation.reset({
+          index: 0,
+          routes: [{ name: 'Login' }],
+        });
 
-  //   } catch (error) {
-  //     console.log(error.message)
-  //   }
-  // } 
+        navigation.navigate("Login")
+       }).catch((err)=>{
+        Alert.alert("Algo deu errado...")
+       })
 
-  // useEffect(()=>{
-  //   getAllPerfils();
-  //  },[]);
+    } catch (error) {
+      console.log(error.message)
+    }
+  } 
+
+  
   return (
     
     <View style={styles.container}>
@@ -47,30 +58,29 @@ export const Dados = () => {
     </View>
 
       <View style={styles.caixaPerfil}>
-      {/* <FlatList
-          data={perfil}
-          kayExtrator={(item) => item.id}
-          renderItem={({item}) => 
-          <TouchableOpacity>
-          <CardLojas logo={item.logo} nome={item.nome} />
-          </TouchableOpacity>}
-          // horizontal
-          contentContainerStyle={styles.listaCategoria}
-          showsVerticalScrollIndicator={false}
-          /> */}
-      <Image style={styles.fotoPerfil} source={LogoVertical} />
-      <Text style={[styles.texto, styles.negrito]}>Márcio Milet</Text>
-      <Text style={styles.texto}>707070-70</Text>
-      </View>
 
-      {/* <View>
-        <Pressable style={styles.opcoes} >
-          <Text style={[styles.negrito, {fontSize: 20}]}>Meus dados</Text>
-        </Pressable>
-        <Pressable style={styles.opcoes} onPress={()=>{navigation.navigate('Login')}}>
-          <Text style={[styles.negrito, {fontSize: 20}]}>Sair</Text>
-        </Pressable>
-      </View> */}
+      <Image style={styles.fotoPerfil} src={foto} />
+      <Text style={[styles.texto, styles.negrito]}>{nome}</Text>
+      <Text style={styles.texto}>CPF: {cpf}</Text>
+      <TextInput defaultValue={email} onChangeText={(text)=>{
+          setEmailAtual(text)
+      }}/>
+      <TextInput defaultValue={telefone} onChangeText={(text)=>{
+        setTelefoneAtual(text)
+      }}/>
+      <Button fontSize= "50"
+          title="Atualizar Perfil"
+          color="#73B6B6" 
+          onPress={()=>{
+            updatePerfil()
+          }}
+          />
+      
+    
+      {/* <Text style={styles.texto}>EMAIL: {email}</Text>
+      <Text style={styles.texto}>TELEFONE: {telefone}</Text> */}
+      </View>
+  
     </View>
     )
 };

@@ -14,14 +14,13 @@ export const Routes = () => {
 
     return (
         <Stack.Navigator>
+            <Stack.Screen name="Login" component={Login} options={{headerShown : false}} />
             <Stack.Screen name="Home" component={Home} options={{headerShown : false}} />
             <Stack.Screen name="Lojas" component={Lojas} options={{headerShown : false}} />
             <Stack.Screen name="Perfil" component={Perfil} options={{headerShown : false}} />
-            <Stack.Screen name="Login" component={Login} options={{headerShown : false}} />
             <Stack.Screen name="Dados" component={Dados} options={{headerShown : false}} />
             <Stack.Screen name="Cupons" component={Cupons} options={{headerShown : false}} />
             <Stack.Screen name="PerfilLojas" component={PerfilLojas} options={{headerShown : false}} />
-            
         </Stack.Navigator>
     )
 };

@@ -12,24 +12,10 @@ import {IPLOCAL} from "@env";
 
 export const Perfil = ({route}) => {
   const navigation = useNavigation();
+  const {login} = route.params;
+  const {cpf,nome, foto, telefone, email} = login
   const [perfil,SetPerfils] = useState([]);
-  // const getAllPerfils = async () => {
-  //   try {
-  //     const response = await axios.get(`http://${IPLOCAL}/categoria`)
-
-  //     const dados = response.data;
-
-  //     SetPerfils(dados)
-
-
-  //   } catch (error) {
-  //     console.log(error.message)
-  //   }
-  // } 
-
-  // useEffect(()=>{
-  //   getAllPerfils();
-  //  },[]);
+  
   return (
     
     <View style={styles.container}>
@@ -59,14 +45,18 @@ export const Perfil = ({route}) => {
           contentContainerStyle={styles.listaCategoria}
           showsVerticalScrollIndicator={false}
           /> */}
-      <Image style={styles.fotoPerfil} source={fotoPerfil} />
-      <Text style={[styles.texto, styles.negrito]}>Márcio Milet</Text>
-      <Text style={styles.texto}>707070-70</Text>
+      <Image style={styles.fotoPerfil} src={foto} />
+      <Text style={[styles.texto, styles.negrito]}>{nome}</Text>
+      <Text style={styles.texto}>CPF: {cpf}</Text>
+      <Text style={styles.texto}>EMAIL: {email}</Text>
+      <Text style={styles.texto}>TELEFONE: {telefone}</Text>
       </View>
 
       <View>
-        <Pressable style={styles.opcoes} onPress={()=>{navigation.navigate('Dados')}} >
-          <Text style={[styles.negrito, {fontSize: 20}]}>Meus dados</Text>
+        <Pressable style={styles.opcoes} onPress={()=>{navigation.navigate('Dados',{
+          loginUser:login
+        })}} >
+          <Text style={[styles.negrito, {fontSize: 20}]}>Atualizar dados</Text>
         </Pressable>
         <Pressable style={styles.opcoes} onPress={()=>{navigation.navigate('Login')}}>
           <Text style={[styles.negrito, {fontSize: 20}]}>Sair</Text>

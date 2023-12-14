@@ -37,14 +37,13 @@ export const Login = () => {
     
     if (loginDb.cpf == cpfUser && loginDb.senha == senhaUser){
       Alert.alert("Logado com sucesso!")
-      navigation.navigate('Home')
+      navigation.navigate('Home', {
+        loginValidado: login
+      })
     }else{
       Alert.alert("Login ou senha incorreta!");
     }
     
-    
-    
-   
   }
 
 
@@ -68,21 +67,17 @@ export const Login = () => {
       <View style={styles.caixaImput}>
 
       <TextInput
-        id='cpf'
+        
         style={styles.input}
-        // onChangeText={setCpf}
+         value={cpf}
         onChangeText={(cpf) => {
           setCpf(cpf)
-          
         }}
         maxLength={14}
-        value={cpf}
         placeholder="CPF"
         // keyboardType="numeric"
       />
-
       <TextInput
-        id='senha'
         style={styles.input}
         // onChangeText={setSenha}
         onChangeText={(senha) => {
@@ -90,14 +85,13 @@ export const Login = () => {
           getLogin()
         }}
         value={senha}
-        secureTextEntry={true}
+        secureTextEntry={false}
         placeholder="SENHA"
       />
       </View>
 
       <View style={styles.entrar}>
         <Button
-          id='entrar'
           fontSize= "50"
           title="Entrar"
           color="#DF8D2D"

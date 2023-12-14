@@ -7,7 +7,6 @@ import { NavigationContainer } from '@react-navigation/native';
 export default function App() {
   return (
     <>
-      
       <StatusBar style="auto" />
       <NavigationContainer>
       <StatusBar backgroundColor='#6495ED' barStyle="dark-content" />
