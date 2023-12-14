@@ -1,4 +1,4 @@
-import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View, ScrollView, Pressable, ImageBackground, TextInput } from 'react-native';
+import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View, ScrollView, Pressable, ImageBackground, TextInput, Share, Alert } from 'react-native';
 import { Horse, ArrowLeft, DotsThreeOutline, Equals, TextAlignJustify } from 'phosphor-react-native';
 import LogoHorizontal from "../../assets/imgens/LogoHorizontal.png";
 import { useLinkProps, useNavigation} from '@react-navigation/native'
@@ -20,6 +20,17 @@ export const Cupons = ({route}) => {
     setCod(codCupom);
    },[]);
   
+
+   const onShare = async () => {
+    try {
+      const result = await Share.share({
+        message:cod
+
+      });
+    }catch (error) {
+      Alert.alert(error.message);
+    }
+  }
 
   //  const compartQrcod = async ()=>{
 
@@ -66,7 +77,6 @@ export const Cupons = ({route}) => {
       <ImageBackground imageStyle={{borderRadius:20}} style={styles.background} src={logoLoja} >
     <View pointerEvents="none" style={styles.overlay}></View>
       <View style={styles.header}>
-      
         <Pressable
           onPress={() => {
             navigation.goBack();
@@ -96,9 +106,7 @@ export const Cupons = ({route}) => {
       </View>
       <Text style={[styles.codigoQrCodeTexto, {marginTop: 15, fontWeight:'bold',}]} >Seu código:</Text>
       <View style={styles.codigoQrCode}>
-      <Pressable onPress={()=>{
-        
-      }}>
+      <Pressable onPress={onShare}>
       <Text style={styles.codigoQrCodeTexto} >{cod}</Text>
       </Pressable>
       
