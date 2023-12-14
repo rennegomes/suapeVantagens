@@ -14,8 +14,8 @@ export const Dados = ({route}) => {
   const {loginUser} = route.params;
   const {_id,cpf, senha, status, nome, foto, email, telefone,} = loginUser;
   const [dados, setDados] = useState('')
-  const [emailAtual, setEmailAtual] = useState('')
- const [telefoneAtual, setTelefoneAtual] = useState('')
+  const [emailAtual, setEmailAtual] = useState(email)
+ const [telefoneAtual, setTelefoneAtual] = useState(telefone)
 
   const updatePerfil = async (req, res) => {
     try {

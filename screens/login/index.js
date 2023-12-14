@@ -75,7 +75,7 @@ export const Login = () => {
         }}
         maxLength={14}
         placeholder="CPF"
-        // keyboardType="numeric"
+        keyboardType="numeric"
       />
       <TextInput
         style={styles.input}
