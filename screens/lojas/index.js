@@ -10,7 +10,7 @@ import {IPLOCAL} from "@env";
 
 
 export const Lojas = ({route}) => {
-  const { titulo,banner} = route.params;
+  const { titulo,banner, loginValidado} = route.params;
   const navigation = useNavigation();
   const [lojas,SetLojas] = useState([]);
   
@@ -47,7 +47,9 @@ export const Lojas = ({route}) => {
         </Pressable>
         <Pressable 
           onPress={() => {
-            navigation.navigate("Perfil");
+            navigation.navigate("Perfil", {
+              login: loginValidado
+            });
           }}
         >
           <TextAlignJustify style={styles.botoes} />
@@ -64,7 +66,7 @@ export const Lojas = ({route}) => {
           kayExtrator={(item) => item._id}
           renderItem={({item}) => 
           <TouchableOpacity>
-          <CardLojas logo={item.logo} nome={item.nome} id={item._id} banner={banner} latitude={item.latitude} longitude={item.longetude} />
+          <CardLojas logo={item.logo} nome={item.nome} id={item._id} banner={banner} latitude={item.latitude} longitude={item.longetude} login={loginValidado} />
           </TouchableOpacity>}
           
           // horizontal

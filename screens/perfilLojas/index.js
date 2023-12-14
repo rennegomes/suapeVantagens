@@ -35,9 +35,9 @@ import { useState, useEffect } from "react";
 import React from "react";
 
 export const PerfilLojas = ({ route }) => {
-  const {id,banner,latitude,longitude,nome} = route.params;
+  const {id,banner,latitude,longitude,nome, loginValido} = route.params;
  
-
+console.log(loginValido)
   const navigation = useNavigation();
   const [loja, SetLoja] = useState([]);
 
@@ -183,7 +183,9 @@ const [userLocation, setUserLocation] = useState(null);
         <Image style={styles.logo} src={loja.logo} />
         <Pressable 
           onPress={() => {
-            navigation.navigate("Perfil");
+            navigation.navigate("Perfil", {
+              login:loginValido
+            });
           }}
         >
           <TextAlignJustify style={styles.botoes} />

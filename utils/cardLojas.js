@@ -9,7 +9,8 @@ export const CardLojas = (props) => {
             banner:props.banner,
             latitude:props.latitude,
             nome: props.nome,
-            longitude: props.longitude
+            longitude: props.longitude,
+            loginValido: props.login
         })}}>
             <ImageBackground imageStyle={{borderRadius:20}} style={styles.listaCategoria2} src={props.logo}>
             <View pointerEvents="none" style={styles.overlay}></View>

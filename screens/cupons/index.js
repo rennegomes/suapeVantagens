@@ -8,7 +8,7 @@ import React from 'react'
 import { CardLojas } from '../../utils/cardLojas';
 import {IPLOCAL} from "@env";
 import QRCode from 'react-native-qrcode-svg';
-import Share from 'react-native-share';
+// import Share from 'react-native-share';
 
 
 export const Cupons = ({route}) => {
@@ -21,9 +21,21 @@ export const Cupons = ({route}) => {
    },[]);
   
 
-   const compartQrcod = async ()=>{
+  //  const compartQrcod = async ()=>{
 
-   }
+  //   const options = {
+  //     mensagem: "compartilhou.",
+  //   }
+
+  // try {
+  //   const respostaCompart = await Share.open(options)
+  // } catch (err) {
+  //    console.log(err.message)
+  // }
+  
+    
+    
+  //  }
 
   // console.log(String.fromCharCode(72, 69, 76, 76, 79))
 
@@ -85,13 +97,7 @@ export const Cupons = ({route}) => {
       <Text style={[styles.codigoQrCodeTexto, {marginTop: 15, fontWeight:'bold',}]} >Seu código:</Text>
       <View style={styles.codigoQrCode}>
       <Pressable onPress={()=>{
-        Share.open(options)
-        .then((res) => {
-          console.log(res);
-        })
-        .catch((err) => {
-          err && console.log(err);
-        });
+        
       }}>
       <Text style={styles.codigoQrCodeTexto} >{cod}</Text>
       </Pressable>

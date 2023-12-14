@@ -8,9 +8,9 @@ export const CardCategoria = (props) => {
     return(
         <TouchableOpacity style={styles.caixaListaCategoria}  onPress={()=>{navigation.navigate('Lojas',{
             titulo: props.titulo,
-            banner: props.banner
+            banner: props.banner,
+            loginValidado: props.login
         })
-       
     }
         }>
             

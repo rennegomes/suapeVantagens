@@ -57,7 +57,7 @@ export const Home = ({route}) => {
           kayExtrator={(item) => item._id}
           renderItem={({item}) => 
           <TouchableOpacity>
-          <CardCategoria banner={item.banner} titulo={item.titulo} />
+          <CardCategoria banner={item.banner} titulo={item.titulo} login={loginValidado}/>
           </TouchableOpacity>}
           // horizontal
           contentContainerStyle={styles.listaCategoria}

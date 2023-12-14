@@ -34,17 +34,6 @@ export const Perfil = ({route}) => {
     </View>
 
       <View style={styles.caixaPerfil}>
-      {/* <FlatList
-          data={perfil}
-          kayExtrator={(item) => item.id}
-          renderItem={({item}) => 
-          <TouchableOpacity>
-          <CardLojas logo={item.logo} nome={item.nome} />
-          </TouchableOpacity>}
-          // horizontal
-          contentContainerStyle={styles.listaCategoria}
-          showsVerticalScrollIndicator={false}
-          /> */}
       <Image style={styles.fotoPerfil} src={foto} />
       <Text style={[styles.texto, styles.negrito]}>{nome}</Text>
       <Text style={styles.texto}>CPF: {cpf}</Text>
