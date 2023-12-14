@@ -22,7 +22,6 @@ const sairLogin = () =>{
     index: 0,
     routes: [{ name: 'Login' }],
   });
-  navigation.navigate('Login')
 }
   return (
     

@@ -28,8 +28,6 @@ export const Dados = ({route}) => {
           index: 0,
           routes: [{ name: 'Login' }],
         });
-
-        navigation.navigate("Login")
        }).catch((err)=>{
         Alert.alert("Algo deu errado...")
        })
