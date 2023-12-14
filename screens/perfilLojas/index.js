@@ -37,7 +37,6 @@ import React from "react";
 export const PerfilLojas = ({ route }) => {
   const {id,banner,latitude,longitude,nome, loginValido} = route.params;
  
-console.log(loginValido)
   const navigation = useNavigation();
   const [loja, SetLoja] = useState([]);
 

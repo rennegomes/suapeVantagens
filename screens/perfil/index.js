@@ -16,6 +16,13 @@ export const Perfil = ({route}) => {
   const {cpf,nome, foto, telefone, email} = login
   const [perfil,SetPerfils] = useState([]);
   
+const sairLogin = () =>{
+  navigation.reset({
+    index: 0,
+    routes: [{ name: 'Login' }],
+  });
+  navigation.navigate('Login')
+}
   return (
     
     <View style={styles.container}>
@@ -47,7 +54,7 @@ export const Perfil = ({route}) => {
         })}} >
           <Text style={[styles.negrito, {fontSize: 20}]}>Atualizar dados</Text>
         </Pressable>
-        <Pressable style={styles.opcoes} onPress={()=>{navigation.navigate('Login')}}>
+        <Pressable style={styles.opcoes} onPress={sairLogin}>
           <Text style={[styles.negrito, {fontSize: 20}]}>Sair</Text>
         </Pressable>
       </View>

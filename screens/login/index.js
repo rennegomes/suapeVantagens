@@ -85,7 +85,7 @@ export const Login = () => {
           getLogin()
         }}
         value={senha}
-        secureTextEntry={false}
+        secureTextEntry={true}
         placeholder="SENHA"
       />
       </View>
