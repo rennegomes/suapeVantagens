@@ -8,6 +8,7 @@ import React from 'react'
 import { CardLojas } from '../../utils/cardCategoria';
 import {IPLOCAL} from "@env";
 import { sha256 } from "react-native-sha256";
+import MaskInput from 'react-native-mask-input';
 
 
 export const Login = () => {
@@ -66,17 +67,18 @@ export const Login = () => {
 
       <View style={styles.caixaImput}>
 
-      <TextInput
-        
-        style={styles.input}
-         value={cpf}
-        onChangeText={(cpf) => {
-          setCpf(cpf)
-        }}
-        maxLength={14}
-        placeholder="CPF"
-        keyboardType="numeric"
-      />
+      <MaskInput
+       style={styles.input}
+      value={cpf}
+      onChangeText={(masked, unmasked) => {
+        setCpf(masked); // you can use the unmasked value as well
+
+        // assuming you typed "9" all the way:
+        console.log(masked); // (99) 99999-9999
+        console.log(unmasked); // 99999999999
+      }}
+      mask={[ /\d/,/\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/,'-' ,/\d/,/\d/]}
+    />
       <TextInput
         style={styles.input}
         // onChangeText={setSenha}
