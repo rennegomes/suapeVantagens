@@ -38,6 +38,7 @@ caso deseje consultar seu ip abra o terminal e digite "ipconfig" o endereço IP 
 <img src="https://networkverge.com/wp-content/uploads/2022/08/ipconfig-command-tutorial.webp" alt="Imagem exemplificando o terminal">
 
 
+Com o terminal (cmd) aberto na pasta do projeto execute os seguintes comandos:
 ```bash
 # baixar as dependencias do projeto
 $ npm install
