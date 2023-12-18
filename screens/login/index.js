@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import React from 'react'
 import { CardLojas } from '../../utils/cardCategoria';
 import {IPLOCAL} from "@env";
-import { sha256 } from "react-native-sha256";
+import * as Crypto from 'expo-crypto';
 import MaskInput from 'react-native-mask-input';
 
 
@@ -34,7 +34,11 @@ export const Login = () => {
   } 
 
 
-  const logar =  (cpfUser, senhaUser, loginDb) =>{
+  const logar = async (cpfUser, senhaUser, loginDb) =>{
+    senhaUser = await Crypto.digestStringAsync(
+      Crypto.CryptoDigestAlgorithm.SHA256,
+      senhaUser
+    );
     
     if (loginDb.cpf == cpfUser && loginDb.senha == senhaUser){
       Alert.alert("Logado com sucesso!")
