@@ -75,8 +75,6 @@ Nós usamos o github para controle de versão. Para as versões disponíveis, ob
 
 ## ✒️ Autores
 
-Mencione todos aqueles que ajudaram a levantar o projeto desde o seu início
-
 * *Alessandro Henrique* - Planejamento, Protótipação e Documentação - [Alessandro Henrique](https://github.com/alessandrohpsf)
 * *Dayvid Douglas* - Desenvolvimento Full-stack - [Dayvid Douglas](https://github.com/dayviddouglas)
 * *Lacê Renê* - Planejamento e Desenvolvimento Front-end - [Renne Gomes](https://github.com/rennegomes)
